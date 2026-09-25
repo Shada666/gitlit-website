@@ -66,6 +66,40 @@ a {
   color: inherit;
 }
 
+/* ---------- SCROLL REVEAL ---------- */
+/* Sections fade + rise in when they enter the viewport, and fade back
+   out when they leave it, so passing a section makes it disappear and
+   the next one appear. */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Hero should feel present immediately rather than sliding up on load */
+.reveal-hero {
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* ---------- NAV ---------- */
 header.nav {
   position: sticky;
