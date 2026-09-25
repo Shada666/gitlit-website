@@ -41,6 +41,7 @@
 html {
   scroll-padding-top: env(safe-area-inset-top, 0px);
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 * {
   box-sizing: border-box;
@@ -98,6 +99,12 @@ a {
     transform: none !important;
     transition: none !important;
   }
+  section {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ---------- NAV ---------- */
@@ -130,7 +137,7 @@ header.nav {
   color: var(--amber);
 }
 .logo-img {
-  height: 80px;
+  height: 60px;
   width: auto;
   display: block;
 }
@@ -340,6 +347,26 @@ h1.hero-title .accent {
 
 section {
   padding: 100px 0;
+  scroll-snap-align: start;
+  opacity: 0.3;
+  filter: brightness(0.75);
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s ease,
+    filter 0.8s ease,
+    transform 0.8s ease;
+}
+
+section.is-visible {
+  opacity: 1;
+  filter: brightness(1);
+  transform: translateY(0);
+}
+
+section.hero {
+  opacity: 1;
+  filter: brightness(1);
+  transform: none;
 }
 .section-head {
   max-width: 60ch;
@@ -347,9 +374,11 @@ section {
 }
 .section-kicker {
   color: var(--mint);
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
   display: block;
 }
 h2 {
@@ -365,48 +394,76 @@ h2 {
 }
 
 /* ---------- ABOUT ---------- */
-.about {
+/* ---------- ABOUT ---------- */
+.about-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
   gap: 56px;
   align-items: center;
 }
+
+.about-copy {
+  min-width: 0; /* يمنع انضغاط النص */
+}
+
+.about-copy h2 {
+  max-width: none; /* شيل أي max-width ضيق زي 22ch */
+  margin-bottom: 22px;
+}
+
 .about-copy p {
   color: var(--text-muted);
-  font-size: 17px;
+  font-size: 18px;
+  line-height: 1.9;
   margin: 0 0 18px;
 }
-.about-copy strong {
-  color: var(--text);
-  font-weight: 700;
-}
+
 .stat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  justify-self: center; /* يوسط المربعات في عمودها */
+  align-self: center;
+  width: min(100%, 460px);
+  margin-inline: auto; /* يوسطها في نص الصفحة */
 }
+
 .stat-card {
   background: var(--bg-panel);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 24px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .stat-num {
-  font-family: var(--font-display);
-  font-size: 38px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 22px;
   color: var(--amber);
   display: block;
+  margin-bottom: 8px;
 }
+
 .stat-label {
   color: var(--text-muted);
   font-size: 14px;
-}
-@media (max-width: 820px) {
-  .about {
-    grid-template-columns: 1fr;
-  }
+  line-height: 1.6;
 }
 
+@media (max-width: 820px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-grid {
+    width: min(100%, 520px);
+    margin-inline: auto;
+  }
+}
 /* ---------- SERVICES ---------- */
 .services-grid {
   display: grid;
@@ -610,7 +667,53 @@ h2 {
   font-size: 15px;
   font-weight: 600;
 }
+/* ---------- GUIDE / HELP ---------- */
+.guide-section {
+  padding: 80px 0;
+}
 
+.guide-block {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 48px 40px;
+}
+
+.guide-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--mint);
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+
+.guide-text {
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 0 auto 28px;
+  max-width: 48ch;
+}
+
+.guide-text strong {
+  color: var(--amber);
+  font-weight: 700;
+}
+
+.guide-cta {
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .guide-block {
+    padding: 36px 24px;
+  }
+}
+
+/* ---------- TESTIMONIAL ---------- */
 /* ---------- TESTIMONIAL ---------- */
 .testimonial {
   background: var(--bg-panel);
