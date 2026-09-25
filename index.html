@@ -7,6 +7,14 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>GitLit — Digital Marketing Agency</title>
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.addEventListener("load", function () {
+        window.scrollTo(0, 0);
+      });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -360,12 +368,8 @@
         <div class="cta-block">
           <h2>جاهزين تكبروا مع GitLit؟</h2>
           <p>ابعتلنا تفاصيل مشروعك، وهنرجعلك بخطة واضحة وعرض سعر مفصّل.</p>
-          <a
-            class="btn-primary"
-            href="https://www.instagram.com/git_lit.eg?stkn=MTg5Zm1vbDNrZGNnaA=="
-            target="_blank"
-            rel="noopener noreferrer"
-            >راسلونا على Instagram</a
+          <a class="btn-primary" href="mailto:hello@gitlit.agency"
+            >راسلونا: hello@gitlit.agency</a
           >
         </div>
       </div>
@@ -387,7 +391,7 @@
               <li><a href="#services">Social Media</a></li>
               <li><a href="#services">Paid Ads</a></li>
               <li><a href="#services">Branding</a></li>
-              <!-- <li><a href="#services">SEO</a></li> -->
+              <li><a href="#services">SEO</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -397,11 +401,11 @@
                 <a href="mailto:hello@gitlit.agency">hello@gitlit.agency</a>
               </li>
               <li>
-                <a
-                  href="https://www.instagram.com/git_lit.eg?stkn=MTg5Zm1vbDNrZGNnaA=="
+                
+                  href="https://www.instagram.com/git_lit.eg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  >Instagram</a
+                  >انستجرام</a
                 >
               </li>
               <li><a href="#">WhatsApp</a></li>
@@ -414,31 +418,5 @@
         </div>
       </div>
     </footer>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const sections = document.querySelectorAll("section");
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                sections.forEach((s) => s.classList.remove("is-visible"));
-                entry.target.classList.add("is-visible");
-              }
-            });
-          },
-          {
-            threshold: 0.3,
-            rootMargin: "-20% 0px -20% 0px",
-          },
-        );
-
-        sections.forEach((section, index) => {
-          if (index === 0) section.classList.add("is-visible");
-          observer.observe(section);
-        });
-      });
-    </script>
   </body>
 </html>
