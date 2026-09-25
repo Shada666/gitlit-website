@@ -95,6 +95,14 @@ header.nav {
 .logo .dot {
   color: var(--amber);
 }
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+.footer-brand .logo-img {
+  height: 52px;
+}
 .nav-links {
   display: flex;
   align-items: center;
